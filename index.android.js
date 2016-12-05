@@ -3,6 +3,7 @@ import {
   AppRegistry,
   StyleSheet,
   Navigator,
+  View
 } from 'react-native';
 import Homepage from './lib/Homepage';
 import Decks from './lib/Decks';
@@ -23,7 +24,7 @@ class GuessTheWord extends Component {
           if(route.index === 0)
             return <Homepage styles={styles} changeScene={() => navigator.push(routes[1])} />
           else
-            return <Decks />
+            return <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent:'space-around', alignItems: 'center',}}>{Array(9).fill(<Decks />)}</View>
           }
         }
         configureScene={(route, routeStack) =>
