@@ -5,10 +5,14 @@ import {
   Navigator,
   View
 } from 'react-native';
+import Orientation from 'react-native-orientation';
 import Homepage from './lib/Homepage';
 import Decks from './lib/Decks';
 
 class GuessTheWord extends Component {
+  componentDidMount(){
+    Orientation.lockToLandscape();
+  }
   render() {
     const routes = [
       {title: 'First Scene', index: 0},
