@@ -28,7 +28,7 @@ class GuessTheWord extends Component {
           if(route.index === 0)
             return <Homepage styles={styles} changeScene={() => navigator.push(routes[1])} />
           else
-            return <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent:'space-around', alignItems: 'center',}}>{Array(9).fill(<Decks />)}</View>
+            return <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent:'space-around', alignItems: 'center',}}><Decks/></View>
           }
         }
         configureScene={(route, routeStack) =>
@@ -40,32 +40,31 @@ class GuessTheWord extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#3498DB',
     flex: 1,
+  },
+  header: {
+    fontSize: 50,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  menu: {
+    height: 200,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  buttons: {
-    alignSelf: 'stretch',
+    alignItems: 'stretch',
     flexDirection: 'row',
-    justifyContent: 'space-around',
   },
-  fix: {
-    flexDirection:'row',
-    justifyContent:'space-around',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    margin: 10
+  main: {
+    flex: 1,
+    borderStyle: 'solid',
+    borderColor: 'red',
+    borderWidth: 1,
+  },
+  other: {
+    flex: 1,
+    borderStyle: 'solid',
+    borderColor: 'blue',
+    borderWidth: 1,
   }
 });
 
