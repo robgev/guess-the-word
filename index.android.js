@@ -3,15 +3,17 @@ import {
   AppRegistry,
   StyleSheet,
   Navigator,
-  View
+  View,
+  StatusBar,
 } from 'react-native';
 import Orientation from 'react-native-orientation';
 import Homepage from './lib/Homepage';
 import Decks from './lib/Decks';
 
 class GuessTheWord extends Component {
-  componentDidMount(){
+  componentWillMount(){
     Orientation.lockToLandscape();
+    StatusBar.setHidden(true);
   }
   render() {
     const routes = [
