@@ -42,30 +42,56 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#3498DB',
     flex: 1,
+    paddingTop: 20,
   },
   header: {
-    fontSize: 50,
+    fontSize: 80,
     textAlign: 'center',
-    marginBottom: 20,
+    color: 'white',
+    fontWeight: '900',
+    marginBottom: 5,
+    textShadowColor: '#2480BB',
+    textShadowOffset: {width: -8, height: 5},
   },
   menu: {
-    height: 200,
+    height: 180,
     justifyContent: 'center',
     alignItems: 'stretch',
     flexDirection: 'row',
   },
-  main: {
+  versus: {
     flex: 1,
-    borderStyle: 'solid',
-    borderColor: 'red',
-    borderWidth: 1,
+    backgroundColor: '#9B59B6',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  single: {
+    flex: 1,
+    backgroundColor: '#1ABC9C',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   other: {
     flex: 1,
-    borderStyle: 'solid',
-    borderColor: 'blue',
-    borderWidth: 1,
-  }
+  },
+  more: {
+    flex: 1,
+    paddingLeft: 10,
+    backgroundColor: '#33485D',
+    justifyContent: 'center',
+  },
+  like: {
+    flex: 1,
+    paddingLeft: 10,
+    backgroundColor: '#2C3E50',
+    justifyContent: 'center',
+  },
+  howto: {
+    flex: 1,
+    paddingLeft: 10,
+    backgroundColor: '#F1C40F',
+    justifyContent: 'center',
+  },
 });
 
 AppRegistry.registerComponent('GuessTheWord', () => GuessTheWord);
