@@ -129,7 +129,6 @@ const MainMenuStyles = StyleSheet.create({
     paddingVertical: 5,
   },
   left: {
-    borderWidth: 1,
     flex: 1,
   },
   right: {
