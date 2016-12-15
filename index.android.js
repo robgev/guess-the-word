@@ -10,6 +10,7 @@ import test from './assets/test.json'
 import Orientation from 'react-native-orientation';
 import Homepage from './lib/Homepage';
 import MainMenu from './lib/MainMenu';
+import MainGameEvent from './lib/MainGameEvent';
 
 class GuessTheWord extends Component {
   componentWillMount(){
@@ -23,20 +24,23 @@ class GuessTheWord extends Component {
       {title: 'Game Deck', index: 2},
       {title: 'End Scene', index: 3},
     ];
-    console.log(test.done);
     return (
       <Navigator
         initialRoute={routes[0]}
         initialRouteStack={routes}
         renderScene={(route, navigator) => {
-          if(route.index === 0)
-            return <Homepage styles={HomepageStyles} changeScene={() => navigator.push(routes[1])} />
-          else
-            return <MainMenu prevScene={() => navigator.pop()} styles={MainMenuStyles} />
+          switch(route.index) {
+            case 0:
+              return <Homepage styles={HomepageStyles} nextScene={() => navigator.push(routes[route.index+1])} />
+            case 1:
+              return <MainMenu nextScene={() => navigator.push(routes[route.index+1])} prevScene={() => navigator.pop()} styles={MainMenuStyles} />
+            case 2:
+              return <MainGameEvent />
           }
-        }
+        }}
         configureScene={(route, routeStack) =>
-          Navigator.SceneConfigs.FloatFromBottom}
+            Navigator.SceneConfigs.FloatFromBottom
+        }
       />
     );
   }

@@ -11,6 +11,7 @@
     "react-native": "0.39.0",
     "react-native-animatable": "^1.1.0",
     "react-native-orientation": "git+https://github.com/yamill/react-native-orientation",
+    "react-native-sensor-manager": "^0.1.10",
     "react-native-vector-icons": "^3.0.0"
   },
   "devDependencies": {
