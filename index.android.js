@@ -11,12 +11,19 @@ import Orientation from 'react-native-orientation';
 import Homepage from './lib/Homepage';
 import MainMenu from './lib/MainMenu';
 import MainGameEvent from './lib/MainGameEvent';
+import EndScreen from './lib/EndScreen'
 
 class GuessTheWord extends Component {
+  constructor() {
+    super();
+    this.state = {themeNumber: 0, score: 0}
+  }
+
   componentWillMount(){
     Orientation.lockToLandscape();
     StatusBar.setHidden(true);
   }
+
   render() {
     const routes = [
       {title: 'First Scene', index: 0},
@@ -27,15 +34,28 @@ class GuessTheWord extends Component {
     return (
       <Navigator
         initialRoute={routes[0]}
-        initialRouteStack={routes}
         renderScene={(route, navigator) => {
           switch(route.index) {
             case 0:
               return <Homepage styles={HomepageStyles} nextScene={() => navigator.push(routes[route.index+1])} />
             case 1:
-              return <MainMenu nextScene={() => navigator.push(routes[route.index+1])} prevScene={() => navigator.pop()} styles={MainMenuStyles} />
+              return <MainMenu
+                nextScene={(themeID) => {
+                  navigator.push(routes[route.index+1]);
+                  this.setState({themeNumber: themeID})
+                }}
+                prevScene={() => navigator.pop()} styles={MainMenuStyles}
+                />
             case 2:
-              return <MainGameEvent />
+              return <MainGameEvent
+                nextScene={(currentScore) => {
+                  navigator.push(routes[route.index+1])
+                  this.setState({score: currentScore})
+                }}
+                themeID={this.state.themeNumber}
+              />
+            case 3:
+              return <EndScreen score={this.state.score} jumpToStart={() => navigator.popN(3)}/>
           }
         }}
         configureScene={(route, routeStack) =>
